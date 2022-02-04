@@ -1,0 +1,50 @@
+<section class="menu" id="menu">
+
+    <h3 class="sub-heading"> Order </h3>
+    <h1 class="heading"> Menu </h1>
+    <div class="menu-wrapper">
+        <div class="menu-list">
+            <ul>
+                <%
+                var myMenu = [];
+                var menuIndex = 'Hamburgers';
+                console.log(menuIndex);
+
+                function shout() {
+                    console.log(myMenu);
+                  }
+                  
+                for(let i=0; i < items.length; i++)
+                {
+                    if(myMenu.indexOf(items[i].menu) < 0)
+                    {
+                        myMenu.push(items[i].menu);
+                    }
+                }
+                for(let i = 0; i < myMenu.length; i++)
+                {%>
+                    <li><button id = "<%=myMenu[i] %>"" onclick = loadCategory(this.id)><%=myMenu[i] %></button></li>
+                <%}
+                
+                %>
+                <li><button>Kids Favorites</button></li>
+            </ul>
+        </div>
+        <div class="box-container" id = "menu-options">
+            <% for(var i=0; i < items.length; i++) { %>
+                <div class ="box" id = '<%=items[i].menu %>'>
+                    <div class="image">
+                        <img src="<%=items[i].imagePath %>" alt="">
+                        <a href="#" class ="fas fa-heart"></a>
+                    </div>
+                    <div class="content">
+                        <h3 id = "itemName"><%= items[i].name %></h3>
+                        <p><%=items[i].description %></p>
+                        <button class="cart-btn">Add to cart</button>
+                        <span class="price">$<%=items[i].price %></span>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</section>
